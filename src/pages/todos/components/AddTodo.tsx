@@ -23,30 +23,29 @@ const AddTodo: React.FC = () => {
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className="appearance-none border rounded w-3/4 py-2 px-3 mr-2" // Cambiado a w-3/4 para hacerlo más ancho
+        className="appearance-none border border-gray-600 rounded w-3/4 py-2 px-3 mr-2" // Sin cambios en el ancho
         placeholder="New Task"
         required
         name="Nombre_tarea"
       />
-
       <div className="relative mr-2">
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
-          className="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          required
+          className="bg-gray-200 border border-gray-600 text-black text-sm rounded p-2.5" 
+          data-testid="selectorPrioridad"
         >
-          <option value="">---</option>
           <option value="Urgente">Muy Prioritario</option>
           <option value="Normal">Prioridad Media</option>
           <option value="Nada de Prioridad">Prioridad Baja</option>
+          
+         
         </select>
       </div>
-
       <button
         type="submit"
         data-testid="addButton"
-        className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded text-sm px-5 py-2.5"
+        className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded text-sm px-5 py-2.5" // Sin cambios en el ancho
         disabled={!text.trim() || !priority}
       >
         Add
@@ -56,3 +55,9 @@ const AddTodo: React.FC = () => {
 };
 
 export default AddTodo;
+
+
+
+
+
+

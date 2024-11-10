@@ -22,36 +22,55 @@ const TodoItem: React.FC<TodoItemProps> = ({ id, text, completed, priority }) =>
   };
 
   return (
-    <div className="mb-4">
+    <div className="mb-4" data-testid="todoItem">
       <div className="flex items-center">
+        {/* Tarea */}
         <p
-          className="w-full"
+          className="w-full text-lg"
           style={{ textDecoration: completed ? "line-through" : "none" }}
+          data-testid="todoText" // data-testid para el texto de la tarea
         >
           {text}
         </p>
+
+        {/* Botón de completar */}
         <button
           onClick={handleComplete}
-          className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-grey border-grey hover:bg-grey"
+          className="flex-no-shrink p-1 ml-2 border-2 rounded text-grey border-grey hover:bg-grey"
+          data-testid="completeButton" // data-testid para el botón de completar
         >
-          {!completed ? <Check size={23} /> : <ArrowUUpLeft size={23} />}
+          {!completed ? <Check size={20} /> : <ArrowUUpLeft size={20} />}
         </button>
+
+        {/* Botón de eliminar */}
         <button
           onClick={handleRemove}
-          className="flex-no-shrink p-2 ml-2 border-2 rounded text-grey border-grey hover:bg-grey"
+          className="flex-no-shrink p-1 ml-2 border-2 rounded text-grey border-grey hover:bg-grey"
+          data-testid="removeButton" // data-testid para el botón de eliminar
         >
-          <Trash size={23} />
+          <Trash size={20} />
         </button>
       </div>
-      <span className={`mt-1 inline-block text-sm rounded-full px-2 py-1 ${
-        priority === "Urgente" ? "bg-red-500 text-white" : 
-        priority === "Normal" ? "bg-green-500 text-white" : 
-        "bg-yellow-500 text-white"
-      }`}>
-        {priority}
+
+      {/* Prioridad de la tarea */}
+      <span
+        className={`ml-2 font-bold border border-gray-400 rounded ${ 
+          priority === "Urgente" ? "bg-red-500 text-white" : 
+          priority === "Normal" ? "bg-green-500 text-white" : 
+          "bg-yellow-500 text-white"
+        }`}
+        style={{ fontSize: '0.5rem', marginTop: '0', display: 'inline-block', textAlign: 'left', padding: '0.2rem 0.5rem' }}
+        data-testid="priorityLabel" // data-testid para la etiqueta de prioridad
+      >
+        {priority === "Nada de Prioridad" ? "Baja" : priority === "Normal" ? "Media" : "Alta"}
       </span>
     </div>
   );
 };
 
 export default TodoItem;
+
+
+
+
+
